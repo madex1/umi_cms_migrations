@@ -1,0 +1,57 @@
+[
+	{
+		"action": "update",
+		"enviroment": {
+			"dev": {
+				"name": "Тестовый тип данных",
+				"id": 191,
+				"action": "update",
+				"groups": [
+					{
+						"name": "group_1",
+						"title": "Птицы счаться",
+						"action": "update",
+						"fields": [
+							{
+								"action": "update",
+								"name": "field_1",
+								"title": "Теперь это поле типа symlink",
+								"type_id": "symlink"
+							},
+							{
+								"action":"delete",
+								"name": "field_2"
+							}
+						]
+					},
+					{
+						"name": "group_2",
+						"title": "Группа полей 2",
+						"action": "delete"
+					},
+					{
+						"name": "group_3",
+						"title": "Группа полей 2",
+						"action": "create",
+						"fields": [
+							{
+								"name": "field_11",
+								"title": "Висивиг",
+								"type_id": "wysiwyg"
+							},
+							{
+								"name": "field_22",
+								"title": "Теги",
+								"type_id": "tags"
+							}
+						]
+					}
+					
+				]
+			},
+			"production": {
+				"parent_id": 123
+			}
+		}
+	}
+]

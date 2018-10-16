@@ -1,0 +1,49 @@
+[
+	{
+		"action": "create",
+		"enviroment": {
+			"dev": {
+				"name": "Новый тип данных создал я",
+				"parent_id": 1,
+				"groups": [
+					{
+						"name": "group_1",
+						"title": "Группа полей 1",
+						"fields": [
+							{
+								"name": "field_1",
+								"title": "Поле 1",
+								"type_id": "string"
+							},
+							{
+								"name": "field_2",
+								"title": "Поле 2",
+								"type_id": "string"
+							}
+						]
+					},
+					{
+						"name": "group_2",
+						"title": "Группа полей 2",
+						"fields": [
+							{
+								"name": "field_1",
+								"title": "Поле 1",
+								"type_id": "string"
+							},
+							{
+								"name": "field_2",
+								"title": "Поле 2",
+								"type_id": "string"
+							}
+						]
+					}
+					
+				]
+			},
+			"production": {
+				"parent_id": 123
+			}
+		}
+	}
+]
