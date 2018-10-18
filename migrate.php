@@ -30,6 +30,12 @@ switch ($action) {
 		}
 		break;
 
+	case 'types':
+		foreach($dataTypes as $key=>$value) {
+			echo "$key\n";
+		}
+		break;
+
 	/* запускаем невыполненные миграции или одну из списка (по номеру) */
 	case 'run':
 		run();
