@@ -6,9 +6,11 @@ $connection = ConnectionPool::getInstance()->getConnection();
 $typesCollection = umiObjectTypesCollection::getInstance();
 $fieldsCollection = umiFieldsCollection::getInstance();
 $dataTypes = getDataTypes();
-$enviroment = "dev";
+
+$enviroment = (isset($argv[2])) ? trim($argv[2]) : "dev";
 
 $action = trim($argv[1]);
+
 
 switch ($action) {
 	/* создаём таблицу, где будут храниться выполненные миграции */
@@ -30,14 +32,11 @@ switch ($action) {
 
 	/* запускаем невыполненные миграции или одну из списка (по номеру) */
 	case 'run':
-		if(isset($argv[2]) && is_int($argv[2]))
-			run($argv[2]);
-		else
-			run();
+		run();
 		break;
 
 	default:
-		exit("do nothing :) why not?\n");
+		exit("do nothing :) why not?\nCurrent enviroment is $enviroment\n");
 		break;
 }
 
@@ -82,23 +81,12 @@ function readMigrations($all = false) {
 
 
 /* функция перебирает миграции и запускает */
-function run($num=false) {
+function run() {
 	$migrations = readMigrations();
 
-	if($num === false) {
-		foreach ($migrations as $key=>$migration) {
+	foreach ($migrations as $key=>$migration) {
 			$migration_data = file_get_contents("./migrations/$migration.json");
 			applyMigrations($migration_data, $migration);
-		}
-	} else {
-		if(isset($migrations[$num])) {
-			$m = $migrations[$num];
-			$migration_data = file_get_contents("./migrations/$m.json");
-			applyMigrations($migration_data, $migration);
-		}else{
-			exit("Нет такой миграции\n");
-		}
-		
 	}
 }
 
